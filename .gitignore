@@ -4,3 +4,7 @@
 
 # library cache
 *cache.lib
+
+# lib-tables
+fp-lib-table
+sym-lib-table
