@@ -1,0 +1,6 @@
+# backup files
+*.bak
+*.sch-bak
+
+# library cache
+*cache.lib
