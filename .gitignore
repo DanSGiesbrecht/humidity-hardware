@@ -1,9 +1,11 @@
 # backup files
 *.bak
 *.sch-bak
+*.kicad_pcb-bak
 
-# library cache
+# cache
 *cache.lib
+*-cache
 
 # lib-tables
 fp-lib-table
