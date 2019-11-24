@@ -1,13 +1,12 @@
 EESchema Schematic File Version 4
-LIBS:humidity-sensor-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
+Title "Humidity Sensor"
+Date "2019-11-24"
+Rev "0.1.0"
 Comp ""
 Comment1 ""
 Comment2 ""
