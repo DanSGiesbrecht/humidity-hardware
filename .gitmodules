@@ -7,3 +7,6 @@
 [submodule "pcb-source/libs/kicad-packages3D"]
 	path = pcb-source/libs/kicad-packages3D
 	url = git@github.com:DanSGiesbrecht/kicad-packages3D.git
+[submodule "pcb-source/kicadScripts"]
+	path = pcb-source/kicadScripts
+	url = git@github.com:DanSGiesbrecht/kicadScripts.git
