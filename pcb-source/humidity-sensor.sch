@@ -7,7 +7,7 @@ Sheet 1 1
 Title "Humidity Sensor"
 Date "2019-12-08"
 Rev "0.1"
-Comp ""
+Comp "Daniel Giesbrecht"
 Comment1 ""
 Comment2 ""
 Comment3 ""
