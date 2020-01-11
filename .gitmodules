@@ -1,12 +1,12 @@
 [submodule "pcb-source/libs/kicad-footprints"]
 	path = pcb-source/libs/kicad-footprints
-	url = git@github.com:DanSGiesbrecht/kicad-footprints.git
+	url = https://github.com/DanSGiesbrecht/kicad-footprints.git
 [submodule "pcb-source/libs/kicad-symbols"]
 	path = pcb-source/libs/kicad-symbols
-	url = git@github.com:DanSGiesbrecht/kicad-symbols.git
+	url = https://github.com/DanSGiesbrecht/kicad-symbols.git
 [submodule "pcb-source/libs/kicad-packages3D"]
 	path = pcb-source/libs/kicad-packages3D
-	url = git@github.com:DanSGiesbrecht/kicad-packages3D.git
+	url = https://github.com/DanSGiesbrecht/kicad-packages3D.git
 [submodule "pcb-source/kicadScripts"]
 	path = pcb-source/kicadScripts
-	url = git@github.com:DanSGiesbrecht/kicadScripts.git
+	url = https://github.com/DanSGiesbrecht/kicadScripts.git
