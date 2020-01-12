@@ -23,24 +23,18 @@ case "${unameOut}" in
     Darwin*)   machine=Mac;;
     CYGWIN*)   machine=Cygwin;;
     MINGW*)    machine=Mingw;;
-    *)         machine="UNKNOWN:${unameOut}"
+    *)         machine=UNKNOWN
 esac
 
-if [ $machine != Linux ] && [ $machine != Mac ]; then
-    read -r -p "Are you using Windows OS? [Y/n] " response
-    case "$response" in
-        [yY][eE][sS]|[yY])
-            printf ">>> Using Windows-style filepaths\n\n"
-            os_path=$(sed 's|^.||g' <<< "$os_path")       # trim the first '/'
-            os_path=$(sed 's|^.|&:|g' <<< "$os_path")     # add ':' after the drive letter (for Windows)
-            ;;
-        *)
-            printf ">>> Unsure which OS-path to use for: "
-            echo $(uname)
-            printf "\n"
-            exit
-            ;;
-    esac
+if [ $machine = Cygwin ] || [ $machine = Mingw ]; then
+    printf ">>> Using Windows-style filepaths\n\n"
+    os_path=$(sed 's|^.||g' <<< "$os_path")       # trim the first '/'
+    os_path=$(sed 's|^.|&:|g' <<< "$os_path")     # add ':' after the drive letter (for Windows)
+elif [ $machine = UNKNOWN ]; then
+    printf ">>> Unsure which filepath to use for: "
+    echo $(uname)
+    printf "\n"
+    exit
 fi
 
 # Update submodules
