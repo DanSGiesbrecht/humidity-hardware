@@ -34,7 +34,7 @@ elif [ $machine = UNKNOWN ]; then
     printf ">>> Unsure which filepath to use for: "
     echo $(uname)
     printf "\n"
-    exit
+    #exit
 fi
 
 # Update submodules
@@ -43,30 +43,26 @@ git submodule update --init
 
 # Copy library tables
 printf "Moving library tables...\n"
-cp libs/kicad-symbols/sym-lib-table .
-cp libs/kicad-footprints/fp-lib-table .
+cp libs/kicad-symbols/sym-lib-table . &
+cp libs/kicad-footprints/fp-lib-table . &
 
 # Copy footprint library
 printf "Generating footprint library...\n"
 rm -rf libs/gen-kicad-footprints/
-cp -r libs/kicad-footprints/ libs/gen-kicad-footprints/
+cp -r libs/kicad-footprints/ libs/gen-kicad-footprints/ &
 # Delete repo-related files (anything except footprint libs)
-find libs/gen-kicad-footprints/ -maxdepth 1 -type f ! -name '*.pretty' -delete
+# find libs/gen-kicad-footprints/ -maxdepth 1 -type f ! -name '*.pretty' -delete
+wait
 
 # Change Library Table Paths
 printf "Updating library tables...\n"
-sed -i "s|\${KICAD_SYMBOL_DIR}|$os_path/libs/kicad-symbols|g" sym-lib-table
-sed -i "s|\${KISYSMOD}|$os_path/libs/gen-kicad-footprints|g" fp-lib-table
+sed -i "s|\${KICAD_SYMBOL_DIR}|$os_path/libs/kicad-symbols|g" sym-lib-table &
+sed -i "s|\${KISYSMOD}|$os_path/libs/gen-kicad-footprints|g" fp-lib-table &
 
 # Change 3D model path for footprints
 printf "Updating 3D model paths...\n"
-var=0
+
 for file in libs/gen-kicad-footprints/*.pretty/*; do
-    if [[ $((var % 2)) = 0 ]]; then
-        sed -i "s|\${KISYS3DMOD}|$os_path/libs/kicad-packages3D|g" $file &
-    else
-        sed -i "s|\${KISYS3DMOD}|$os_path/libs/kicad-packages3D|g" $file
-    fi
-    var=$((var+1))
+    sed -i "s|\${KISYS3DMOD}|$os_path/libs/kicad-packages3D|g" $file &
 done
 printf "\nDONE"
